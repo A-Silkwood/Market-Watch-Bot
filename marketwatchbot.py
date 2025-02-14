@@ -1,12 +1,12 @@
 from dotenv import load_dotenv
 import os
 import discord
+import logging
 
 # Global Variables
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
-
 
 def main():
     # load in .env variables
@@ -14,7 +14,8 @@ def main():
     BOT_TOKEN = os.getenv("BOT_TOKEN")
 
     # initialize bot
-    client.run(BOT_TOKEN)
+    handler = logging.FileHandler(filename='marketwatch.log', encoding='utf-8', mode='w')
+    client.run(BOT_TOKEN, log_handler=handler, log_level=logging.DEBUG)
 
 
 # General Bot Events
