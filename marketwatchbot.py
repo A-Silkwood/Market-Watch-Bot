@@ -2,40 +2,39 @@ from dotenv import load_dotenv
 import os
 import discord
 import logging
+from discord.ext import commands
+
+# Load .env
+load_dotenv()
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+CMD_PREFIX = os.getenv('CMD_PREFIX')
 
 # Global Variables
 intents = discord.Intents.default()
 intents.message_content = True
-client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
 
 def main():
     # load in .env variables
-    load_dotenv()
-    BOT_TOKEN = os.getenv("BOT_TOKEN")
+    BOT_TOKEN = os.getenv('BOT_TOKEN')
 
     # initialize bot
     handler = logging.FileHandler(filename='marketwatch.log', encoding='utf-8', mode='w')
-    client.run(BOT_TOKEN, log_handler=handler, log_level=logging.DEBUG)
+    bot.run(BOT_TOKEN, log_handler=handler, log_level=logging.DEBUG)
 
 
 # General Bot Events
 
 # on bot initialized
-@client.event
+@bot.event
 async def on_ready():
-    print(f"We have logged in as {client.user}")
+    print(f'We have logged in as {bot.user}')
+
+@bot.command()
+@commands.is_owner()
+async def shutdown(ctx):
+    await bot.close()
 
 
-# on user message received
-@client.event
-async def on_message(message):
-    # ignore bot's own messages
-    if message.author == client.user:
-        return
-
-    if message.content.startswith("$hello"):
-        await message.channel.send("Hello!")
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
