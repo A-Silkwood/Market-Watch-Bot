@@ -22,9 +22,7 @@ def main():
     BOT_TOKEN = os.getenv("BOT_TOKEN")
 
     # initialize bot
-    handler = logging.FileHandler(
-        filename="thefakemarket.log", encoding="utf-8", mode="w"
-    )
+    handler = logging.FileHandler(filename="bot.log", encoding="utf-8", mode="w")
     bot.run(BOT_TOKEN, log_handler=handler, log_level=logging.DEBUG)
 
 
