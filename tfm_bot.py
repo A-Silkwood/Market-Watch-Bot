@@ -6,12 +6,12 @@ import discord
 import logging
 from discord.ext import commands
 
-# Load .env
+# Global Variables
+# .env vars
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CMD_PREFIX = os.getenv("CMD_PREFIX")
-
-# Global Variables
+# bot vars
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix=CMD_PREFIX, intents=intents)
@@ -23,7 +23,7 @@ def main():
 
     # initialize bot
     handler = logging.FileHandler(
-        filename="marketwatch.log", encoding="utf-8", mode="w"
+        filename="thefakemarket.log", encoding="utf-8", mode="w"
     )
     bot.run(BOT_TOKEN, log_handler=handler, log_level=logging.DEBUG)
 
