@@ -1,3 +1,11 @@
+"""
+File: lobby.py
+Author: Andrew Silkwood
+Date Created: 2025-02-13
+Description:
+    Discord bot cog that handles game lobbies.
+"""
+
 import discord
 from discord.ext import commands
 
