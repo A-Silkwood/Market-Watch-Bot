@@ -1,8 +1,18 @@
+"""
+File: sm_api_requests.py
+Author: Andrew Silkwood
+Date Created: 2025-02-15
+Description:
+    A bridge to connect the bot code to a stock market API.
+    Currently configured for Tiingo API.
+"""
+
 from utils import JSONType
 from dotenv import load_dotenv
 import os
 from datetime import date
 import requests
+import bot
 
 # Global Variables
 # .env vars
@@ -11,8 +21,13 @@ API_TOKEN = os.getenv("SM_API_TOKEN")
 API_URL = os.getenv("SM_API_URL")
 
 
+# this main is not intended for actual use; used to test functionality
 def main():
     print(search_query("google"))
+
+
+def test():
+    print(bot.db)
 
 
 # Get current information about a ticker
@@ -54,36 +69,6 @@ def eod_ticker_desc(ticker):
     }
     response = requests.get(f"{API_URL}/tiingo/daily/{ticker}", headers=headers)
     return response.json()
-
-
-# Don't have access
-# def news_ticker(ticker):
-#     d = date.today()
-
-#     headers = {
-#         "Content-Type": "application/json",
-#         "Authorization": f"Token {API_TOKEN}",
-#     }
-#     params = {
-#         "startDate": d.replace(month=d.month - 1).isoformat(),
-#         "limit": 50,
-#     }
-#     response = requests.get(f"{API_URL}/tiingo/news", headers=headers, params=params)
-#     return response.json()
-
-
-# Don't have access
-# def dist_ticker(ticker):
-#     d = date.today()
-
-#     headers = {
-#         "Content-Type": "application/json",
-#         "Authorization": f"Token {API_TOKEN}",
-#     }
-#     response = requests.get(
-#         f"{API_URL}/tiingo/corporate-actions/{ticker}/distributions", headers=headers
-#     )
-#     return response.json()
 
 
 # Searches for tickers based on a query
