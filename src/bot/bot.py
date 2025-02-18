@@ -4,6 +4,7 @@ Author: Andrew Silkwood
 Date Created: 2025-02-13
 Description:
     Extension of discord.ext.commands.Bot. Loads cogs folder on initialization.
+    Initializes database connection.
 """
 
 from os import listdir
@@ -12,6 +13,7 @@ from re import match
 from discord.ext import commands
 
 from src.config.settings import SRC_PTH
+from src.db.connection import init_db
 
 
 class SM_Bot(commands.Bot):
@@ -32,3 +34,6 @@ class SM_Bot(commands.Bot):
                 except:
                     print(f"\tFailed to load [{f[:-3]}]")
         print("Cogs have been loaded")
+
+        # initialize database connection
+        await init_db()
