@@ -23,11 +23,6 @@ DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 
-# this main is not intended for actual use; used to test functionality
-def main():
-    asyncio.run(connect())
-
-
 # connect to the database
 async def connect():
     print(f"Connecting to [{DB_NAME}] on [{DB_HOST}:{DB_PORT}] as [{DB_USER}]...")
@@ -40,7 +35,3 @@ async def connect():
     )
     print(f"Connected to [{DB_NAME}]")
     return db
-
-
-if __name__ == "__main__":
-    main()
