@@ -1,3 +1,4 @@
+-- Insert row into guilds
 CREATE OR REPLACE PROCEDURE insert_guild(id BIGINT)
 LANGUAGE plpgsql
 AS $$
