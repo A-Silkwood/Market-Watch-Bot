@@ -1,3 +1,11 @@
+"""
+File: settings.py
+Author: Andrew Silkwood
+Date Created: 2025-02-17
+Description:
+    Contains various global variables used throughout the bot.
+"""
+
 import os
 
 from dotenv import load_dotenv

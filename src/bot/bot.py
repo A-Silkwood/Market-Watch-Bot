@@ -3,9 +3,7 @@ File: bot.py
 Author: Andrew Silkwood
 Date Created: 2025-02-13
 Description:
-    Initializes a Discord bot. The bot is intended to let Discord users to take
-    part in a simulated stock market using real-time data from the actual stock
-    market.
+    Extension of discord.ext.commands.Bot. Loads cogs folder on initialization.
 """
 
 from os import listdir

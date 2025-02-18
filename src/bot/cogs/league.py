@@ -1,9 +1,11 @@
 """
-File: lobby.py
+File: league.py
 Author: Andrew Silkwood
 Date Created: 2025-02-13
 Description:
-    Discord bot cog that handles game lobbies.
+    Discord bot cog that handles game leagues. Scope will be restricted to
+    control of leagues such as players and game settings. Actual game behavior
+    will be handled elsewhere.
 """
 
 from discord.ext import commands

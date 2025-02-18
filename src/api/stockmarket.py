@@ -1,5 +1,5 @@
 """
-File: sm_api_requests.py
+File: stockmarket.py
 Author: Andrew Silkwood
 Date Created: 2025-02-15
 Description:

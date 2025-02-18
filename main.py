@@ -1,3 +1,11 @@
+"""
+File: main.py
+Author: Andrew Silkwood
+Date Created: 2025-02-17
+Description:
+    Running this file will start up the Discord bot.
+"""
+
 import logging
 
 import discord

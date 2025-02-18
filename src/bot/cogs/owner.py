@@ -1,9 +1,10 @@
 """
-File: lobby.py
+File: owner.py
 Author: Andrew Silkwood
-Date Created: 2025-02-13
+Date Created: 2025-02-18
 Description:
-    Discord bot cog that handles game lobbies.
+    Discord bot cog that handles owner only commands. This includes cog
+    loading/unloading and graceful shutdown of the bot.
 """
 
 from discord.ext import commands
