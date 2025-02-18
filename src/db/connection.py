@@ -17,9 +17,6 @@ _db = None
 async def init_db():
     global _db
     if _db is None:
-        print(
-            f"Connecting to [{DB.get('name')}] on [{DB.get('host')}:{DB.get('port')}] as [{DB.get('user')}]..."
-        )
         _db = await asyncpg.create_pool(
             user=DB.get("user"),
             password=DB.get("password"),
@@ -27,7 +24,9 @@ async def init_db():
             host=DB.get("host"),
             port=DB.get("port"),
         )
-        print(f"Connected to [{DB.get('name')}]")
+        print(
+            f"Connected to [{DB.get('name')}] on [{DB.get('host')}:{DB.get('port')}] as [{DB.get('user')}]"
+        )
 
 
 # getter for connection
