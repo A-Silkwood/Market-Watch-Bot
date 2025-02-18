@@ -13,8 +13,6 @@ import os
 from dotenv import load_dotenv
 import requests
 
-from utils import JSONType
-
 # Global Variables
 # .env vars
 load_dotenv()
@@ -22,13 +20,8 @@ API_TOKEN = os.getenv("SM_API_TOKEN")
 API_URL = os.getenv("SM_API_URL")
 
 
-# this main is not intended for actual use; used to test functionality
-def main():
-    print(search_query("google"))
-
-
 # Get current information about a ticker
-def eod_ticker(ticker: str) -> JSONType:
+def eod_ticker(ticker: str):
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Token {API_TOKEN}",
@@ -38,7 +31,7 @@ def eod_ticker(ticker: str) -> JSONType:
 
 
 # Get information about a ticker for specified amount of years
-def eod_ticker_year(ticker: str, years: int) -> JSONType:
+def eod_ticker_year(ticker: str, years: int):
     years = 1 if years < 1 else years
 
     d = date.today()
@@ -59,7 +52,7 @@ def eod_ticker_year(ticker: str, years: int) -> JSONType:
 
 
 # Get detail information about a ticker
-def eod_ticker_desc(ticker):
+def eod_ticker_desc(ticker: str):
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Token {API_TOKEN}",
@@ -69,7 +62,7 @@ def eod_ticker_desc(ticker):
 
 
 # Searches for tickers based on a query
-def search_query(query):
+def search_query(query: str):
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Token {API_TOKEN}",
@@ -81,7 +74,3 @@ def search_query(query):
         f"{API_URL}/tiingo/utilities/search", headers=headers, params=params
     )
     return response.json()
-
-
-if __name__ == "__main__":
-    main()
