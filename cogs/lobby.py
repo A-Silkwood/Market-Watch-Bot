@@ -11,8 +11,13 @@ from discord.ext import commands
 
 
 class Lobby(commands.Cog):
+    # on cog load
     def __init__(self, bot):
         self.bot = bot
+
+    # on cog unload
+    def cog_unload(self):
+        return super().cog_unload()
 
     @commands.command()
     async def test(self, ctx):

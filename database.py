@@ -30,6 +30,7 @@ def main():
 
 # connect to the database
 async def connect():
+    print(f"Connecting to [{DB_NAME}] on [{DB_HOST}:{DB_PORT}] as [{DB_USER}]...")
     db = await asyncpg.connect(
         user=DB_USER,
         password=DB_PASSWORD,
@@ -37,6 +38,7 @@ async def connect():
         host=DB_HOST,
         port=DB_PORT,
     )
+    print(f"Connected to [{DB_NAME}]")
     return db
 
 
