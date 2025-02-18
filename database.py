@@ -7,11 +7,11 @@ Description:
     Currently configured for PostgreSQL 17.
 """
 
-from dotenv import load_dotenv
-import os
-import asyncpg
-
 import asyncio
+import os
+
+import asyncpg
+from dotenv import load_dotenv
 
 # Global Variables
 # .env vars

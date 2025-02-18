@@ -7,12 +7,13 @@ Description:
     Currently configured for Tiingo API.
 """
 
-from utils import JSONType
-from dotenv import load_dotenv
-import os
 from datetime import date
+import os
+
+from dotenv import load_dotenv
 import requests
-import bot
+
+from utils import JSONType
 
 # Global Variables
 # .env vars
@@ -24,10 +25,6 @@ API_URL = os.getenv("SM_API_URL")
 # this main is not intended for actual use; used to test functionality
 def main():
     print(search_query("google"))
-
-
-def test():
-    print(bot.db)
 
 
 # Get current information about a ticker
