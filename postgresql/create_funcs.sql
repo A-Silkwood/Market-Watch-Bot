@@ -1,0 +1,6 @@
+CREATE OR REPLACE FUNCTION get_guild_ids()
+RETURNS TABLE(id BIGINT) AS $$
+BEGIN
+    RETURN QUERY SELECT g.id FROM guilds g;
+END;
+$$ LANGUAGE plpgsql;

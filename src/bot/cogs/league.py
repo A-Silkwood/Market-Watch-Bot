@@ -10,15 +10,25 @@ Description:
 
 from discord.ext import commands
 
+from src.db.queries import add_guild, get_guild_ids
+
 
 class League(commands.Cog):
     # on cog load
     def __init__(self, bot):
         self.bot = bot
 
-        # needs to catch up
-        # catch up needs to carry over to stock market calculations as well
-        # ensure all guilds are in the database
+        # call on ready
+        self.bot.loop.create_task(self.cog_ready())
+
+    # cog is ready; catch up logic to update database to current discord state
+    async def cog_ready(self):
+        # add guilds while cog was offline to database
+        # TODO implement datetime variable of last unload to pass fetch_guild's 'after' param
+        guilds = await get_guild_ids()
+        async for guild in self.bot.fetch_guilds(limit=None):
+            if guild.id not in guilds:
+                await add_guild(guild.id)
 
     # on cog unload
     def cog_unload(self):
@@ -28,12 +38,7 @@ class League(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
-        print(guild.id)
-        print(type(guild.id))
-        # try:
-        #     await db.execute("CALL insert_guild($1)", guild.id)
-        # except Exception as e:
-        #     print(f"Could not add guild!: {e}")
+        await add_guild(guild.id)
 
     # creation
 
