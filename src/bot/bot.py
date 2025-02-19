@@ -24,6 +24,9 @@ class SM_Bot(commands.Bot):
     async def on_ready(self):
         print(f"We have logged in as [{self.user}]")
 
+        # initialize database connection
+        await init_db()
+
         # load all files in the cogs folder
         print("Loading cogs...")
         for f in listdir(f"{SRC_PTH}/bot/cogs/"):
@@ -34,6 +37,3 @@ class SM_Bot(commands.Bot):
                 except:
                     print(f"\tFailed to load [{f[:-3]}]")
         print("Cogs have been loaded")
-
-        # initialize database connection
-        await init_db()
